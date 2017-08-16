@@ -2,8 +2,8 @@ var newGameBtn = document.getElementById('js-newGameButton');
 newGameBtn.addEventListener('click', newGame);
 
 var pickRock = document.getElementById('js-playerPick_rock'),
-    pickPaper = document.getElementById('js-playerPick_paper'),
-    pickScissors = document.getElementById('js-playerPick_scissors');
+     pickPaper = document.getElementById('js-playerPick_paper'),
+     pickScissors = document.getElementById('js-playerPick_scissors');
 
 pickRock.addEventListener('click', function() { playerPick('rock') });
 pickPaper.addEventListener('click', function() { playerPick('paper') });
@@ -17,6 +17,7 @@ var gameState = 'notStarted';
 	computer = {
 		score: 0
 	};
+	
 var newGameElem = document.getElementById('js-newGameElement'),
 	pickElem = document.getElementById('js-playerPickElement'),
 	resultsElem = document.getElementById('js-resultsTableElement');
@@ -27,7 +28,7 @@ function setGameElements() {
         newGameElem.style.display = 'none';
         pickElem.style.display = 'block';
         resultsElem.style.display = 'block';
-    break;
+      break;
     case 'ended':
         newGameBtn.innerText = 'Jeszcze raz';
     case 'notStarted':
@@ -56,16 +57,8 @@ function newGame() {
 
 };
 function playerPick(playerPick) {
-    var computerPick = getComputerPick();
-
-    playerPickElem.innerHTML = playerPick;
-    computerPickElem.innerHTML = computerPick;
-
-    checkRoundWinner(playerPick, computerPick);
+    console.log(playerPick);
 };
-
-var x = Math.random();
-Math.floor(Math.random()*3);
 
 function getComputerPick() {
     var possiblePicks = ['rock', 'paper', 'scissors'];
@@ -76,6 +69,12 @@ var playerPickElem = document.getElementById('js-playerPick'),
     playerResultElem = document.getElementById('js-playerResult'),
     computerResultElem = document.getElementById('js-computerResult');
 
+function playerPick(playerPick) {
+    var computerPick = getComputerPick();
+
+    playerPickElem.innerHTML = playerPick;
+    computerPickElem.innerHTML = computerPick;
+};
 
 function checkRoundWinner(playerPick, computerPick) {
   playerResultElem.innerHTML = computerResultElem.innerHTML = '';
@@ -102,9 +101,15 @@ function checkRoundWinner(playerPick, computerPick) {
 		setGamePoints();
     }
 	
-
 };
+function playerPick(playerPick) {
+    var computerPick = getComputerPick();
 
+    playerPickElem.innerHTML = playerPick;
+    computerPickElem.innerHTML = computerPick;
+
+    checkRoundWinner(playerPick, computerPick);
+};
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
@@ -126,5 +131,3 @@ function checkGameWinner(player.score, computer.score) {
         computerResultElem.innerHTML = "You win the game!";
     };
 };
-
-/* funkcja playerPick uzyta w liniach 8-10 jest zadeklarowana w linii 107? czemu przyjmuje argumtn playerPick?
