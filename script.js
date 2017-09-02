@@ -94,7 +94,7 @@ function checkRoundWinner(playerPick, computerPick) {
         computer.score++;
 		setGamePoints();
     }
-	
+checkGameWinner();
 };
 
 function playerPick(playerPick) {
@@ -115,17 +115,19 @@ function checkGameWinner() {
 	
 	var gameWiner = '';
 
-    if (playerScore === 10) {
+    if (player.score === 10) {
         gameWiner = 'player';
-    } else if (computerScore === 10) {
+    } else if (computer.score === 10) {
 		gameWiner = 'computer'
     };
 
     if (gameWiner == 'player') {
         playerResultElem.innerHTML = "You win the game!";
-    } else if (winnerIs == 'computer') {
+		setGameElements('ended');
+    } else if (gameWiner == 'computer') {
         computerResultElem.innerHTML = "You win the game!";
+		setGameElements('ended');
     };
 };
 
-checkGameWinner(player.score, computer.score);
+
